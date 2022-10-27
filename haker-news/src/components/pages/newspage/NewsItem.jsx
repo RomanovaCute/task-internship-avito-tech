@@ -1,10 +1,10 @@
 import {NewsContainer, Info, Title} from './styles'
 
 const ListItem = (props) => {
-    const {title, score, by, time} = props;
+    const {title, score, by, time, onClick} = props;
 
     return(
-        <NewsContainer>
+        <NewsContainer onClick={onClick}>
             <Title>
                 <h4>{title}</h4>
             </Title>
