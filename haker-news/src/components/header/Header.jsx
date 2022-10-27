@@ -1,19 +1,17 @@
-import { NavLink } from 'react-router-dom';
+import logo from '../../assets/images/hacker-news.svg'
+import {HeaderContainer, Title, LogoBox} from './styles'
 
 const Nav = () => {
     return(
-        <div className='nav-conatiner'>
-            <p>Hacker News</p>
-            <div className='nam-items'>
-                <NavLink to="/">Homw</NavLink>
-                <NavLink to="/2">Past</NavLink>
-                <NavLink to="/3">Comments</NavLink>
-                <NavLink to="/4">Ask</NavLink>
-                <NavLink to="/5">Show</NavLink>
-                <NavLink to="/6">Jobs</NavLink>
-                <NavLink to="/7">Submit</NavLink>
-            </div>
-        </div>
+        <HeaderContainer>
+            <Title>
+                <LogoBox>
+                    <img className="logo" src={logo} alt='logo'></img>
+                    <h1>Hacker News</h1>
+                </LogoBox>
+                <button className='update-btn'>Update</button>
+            </Title>
+        </HeaderContainer>
     )
 }
 

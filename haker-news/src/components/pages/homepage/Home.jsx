@@ -1,11 +1,13 @@
 import { useSelector } from "react-redux";
 import ListItem from "../newspage/NewsItem";
+import {HomeContainer} from './styles'
+import { timeConverter } from "../../../service/date-converter";
 
 const Homepage = () => {
     const news = useSelector(state => state.news)
 
     return(
-        <div className="homepage">
+        <HomeContainer>
             {
                 news.map(item => 
                     <ListItem
@@ -13,13 +15,11 @@ const Homepage = () => {
                         title={item.title}
                         by={item.by}
                         score={item.score}
-                        time={item.time}
+                        time={timeConverter(item.time)}
                     />   
                 )
             }
-            
-            
-        </div>
+        </HomeContainer>
     )
 }
 
