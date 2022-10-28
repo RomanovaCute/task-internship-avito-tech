@@ -1,4 +1,4 @@
-import { ADD_NEWS, ADD_COMMENTS, SET_ITEM } from "../actions/news-actions";
+import { ADD_NEWS, ADD_COMMENTS, SET_ITEM } from '../constants/constants';
 
 export const newsReducer = (state = [], action) => {
     switch(action.type){

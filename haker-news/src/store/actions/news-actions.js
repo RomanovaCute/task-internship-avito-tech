@@ -1,6 +1,4 @@
-export const ADD_NEWS = 'ADD_NEWS';
-export const SET_ITEM = 'SET_ITEM';
-export const ADD_COMMENTS = 'ADD_COMMENTS';
+import { ADD_NEWS, SET_ITEM, ADD_COMMENTS } from "../constants/constants"
 
 const addNews = (news) => ({
     type: ADD_NEWS,
@@ -19,29 +17,6 @@ const getComments = (comments) => ({
 
 const url = `https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty`
 
-// // комментарии
-// export const loadComments = (commentId) => async (dispatch) => {
-//     const commentsArray = [];
-
-//     const oneComment = await loadNewsById(commentId);
-//     const response = await oneComment;
-//     const collectionOfComment = {
-//         id: response.id,
-//         by: response.by,
-//         text: response.text,
-//         kidsComments: response.kids ? response.kids : []
-//     }
-
-//     commentsArray.push(collectionOfComment)
-
-//     const result = async () => {
-//         const allComments = await Promise.all(commentsArray)
-//         dispatch(getComments(allComments))
-
-//         result()
-//     }
-// }
-
 export const loadComments = (id) => async (dispatch) => {
     const response = await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`)
     const result = await response.json();
@@ -49,12 +24,6 @@ export const loadComments = (id) => async (dispatch) => {
 
     if(result.kids){
         const comments = await parseComment(result.kids)
-        // const commentsCollection = []
-        
-        // const commentState = {
-        //     comments: comments,
-        //     count: result.length
-        // }
         console.log(comments);
         dispatch(getComments(comments))
     }
