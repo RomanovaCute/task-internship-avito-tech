@@ -8,7 +8,7 @@ import { timeConverter } from "../../../service/date-converter";
 import { Comment } from '../../comments/Comments';
 
 
-export const Details = () => {
+export const Detail = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const dispatch = useDispatch();
