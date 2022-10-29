@@ -1,11 +1,18 @@
+import { CommentsContainer, User, Text, Button } from './style'
+
 export const Comment = (props) => {
-    const { id, by, text } = props; //kids
+    const { by, text, time, onClick } = props; //kids
 
     return(
-        <div>
-            <p>{id}</p>
-            <p>{by}</p>
-            <p>{text}</p>
-        </div>
+        <CommentsContainer>
+            <User>
+                <b className="author">{by}</b>
+                <p className="time">{time}</p>
+            </User>
+            <Text>
+                <p className='text'>{text}</p>
+            </Text>
+            <Button onClick = {onClick}>Show all</Button>
+        </CommentsContainer>
     )
 }

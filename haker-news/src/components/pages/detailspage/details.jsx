@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
-import { loadNewsById, loadComments } from '../../../store/actions/news-actions';
+import { loadNewsById, loadComments, getChildComments } from '../../../store/actions/news-actions';
 import { Information } from '../../info/Inform';
 import { selectItem, selectComments } from '../../../store/selector/news-selector';
 import { timeConverter } from "../../../service/date-converter";
 import { Comment } from '../../comments/Comments';
+import { DetailsContainer, MainContainer, Item, Comments } from './styles'
 
 
 export const Detail = () => {
@@ -23,29 +24,41 @@ export const Detail = () => {
     useEffect(() => {
         dispatch(loadComments(id))
     }, [])
+    
+    // useEffect(() => {
+    //     dispatch(loadChildComments(id))
+    // }, [])
 
     return(
-        <div className='details-container'>
+        <DetailsContainer>
             <div className='item-buttons'>
                 <button onClick={() => navigate(-1)}>Back</button>
                 <button onClick={() => dispatch(loadNewsById(id))}>Update</button>
             </div>
-            <Information 
-                {...item}
-                key={item.id}
-                time={timeConverter(item.time)}
-            />
-            {
-                comments.map(elem => 
-                    <Comment 
-                        key={elem.id}
-                        id={elem.id}
-                        by={elem.by}
-                        text={elem.text}
-                    />    
-                )
-            }
-        </div>
+            <MainContainer>
+                <Information 
+                    {...item}
+                    key={item.id}
+                    time={timeConverter(item.time)}
+                />
+            <Comments>
+                {
+                    comments.map(elem => 
+                        <Comment 
+                            key={elem.id}
+                            by={elem.by}
+                            text={elem.text}
+                            time={timeConverter(elem.time)}
+                            onClick={() => {dispatch(getChildComments(elem.id))}}
+                            // id={elem.id}
+                        />
+                    )
+                }
+            </Comments>
+            </MainContainer>
+            
+            
+        </DetailsContainer>
     )
 }
 

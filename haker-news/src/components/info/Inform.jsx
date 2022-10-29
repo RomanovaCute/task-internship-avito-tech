@@ -1,18 +1,20 @@
+import { ItemContainer, ItemInfo } from './styles'
+
 export const Information = (props) => {
     const { url, title, time, by, descendants} = props;
 
     return(
-        <div className="item-container">
+        <ItemContainer>
             <div className="item-header">
                 <h4>{title}</h4>
                 <a href={url}>{url}</a>
             </div>
-            <div className="item-info">
-                <p>Published at {time}</p>
-                <p>Author: {by}</p> 
-                <p>Comments: {descendants}</p>
-            </div>
-        </div>
+            <ItemInfo>
+                <p className='elem'>Published at {time}</p>
+                <p className='elem'>Author: {by}</p> 
+                <p className='elem'>Comments: {descendants}</p>
+            </ItemInfo>
+        </ItemContainer>
         
     )
 }
