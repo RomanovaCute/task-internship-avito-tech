@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const ItemContainer = styled.div`
     text-align: justify;
+    width: 60%;
 
     h4{
         font-size: 20px;

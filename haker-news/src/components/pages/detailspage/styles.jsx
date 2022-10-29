@@ -3,11 +3,12 @@ import styled from 'styled-components'
 export const DetailsContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 80%;
+    margin: 0 auto;
 `
 
 export const MainContainer = styled.div`
-    width: 50%;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
@@ -15,6 +16,10 @@ export const MainContainer = styled.div`
 `
 
 export const Comments = styled.div`
-    padding: 20px
+    padding: 20px;
+
+    &.close{
+        display: none;
+    }
 `
 

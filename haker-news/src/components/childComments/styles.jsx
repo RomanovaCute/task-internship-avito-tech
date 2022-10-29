@@ -6,6 +6,10 @@ export const CommentsContainer = styled.div`
     gap: 10px;
     padding: 30px;
     width: 40%
+
+    &.close{
+        display: none;
+    }
 `
 
 export const User = styled.div`
