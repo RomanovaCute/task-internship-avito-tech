@@ -1,22 +1,51 @@
-import { ADD_NEWS, SET_ITEM, ADD_COMMENTS } from "../constants/constants"
+import { ADD_NEWS, SET_ITEM, ADD_COMMENTS, ADD_CHILDREN_COMMENTS } from "../constants/constants"
 
-const addNews = (news) => ({
+export const addNews = (news) => ({
     type: ADD_NEWS,
     payload: news
 })
 
-const setItem = (item) => ({
+export const setItem = (item) => ({
     type: SET_ITEM,
     payload: item
 })
 
-const getComments = (comments) => ({
+export const getComments = (comments) => ({
     type: ADD_COMMENTS,
     payload: comments
 })
 
+export const getChildrenComments = (children) => ({
+    type: ADD_CHILDREN_COMMENTS,
+    payload: children
+})
+
+
 const url = `https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty`
 
+// children comments
+export const getChildComments = (id) => async (dispatch)=> {
+    console.log(id);
+    const getIds = await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`)
+    const resultGetId = await getIds.json()
+    const resultChildId = resultGetId.kids
+    console.log(resultChildId);
+
+    const getChildComments = async (resultChildId) => {
+        const result = await Promise.all(resultChildId.map(async (id) => {
+            const res = await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`)
+            const resultChildComments = await res.json()
+            console.log(resultChildComments);
+            
+            return resultChildComments
+        }))
+        return result
+    }
+    dispatch(getChildrenComments(getChildComments(resultChildId)))
+}
+
+
+// основные комментарии
 export const loadComments = (id) => async (dispatch) => {
     const response = await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`)
     const result = await response.json();
