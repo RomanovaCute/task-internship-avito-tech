@@ -15,6 +15,7 @@ export const ItemContainer = styled.div`
 export const ItemInfo = styled.div`
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
     text-align: left;
     font-size: 16px;
 

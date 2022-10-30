@@ -5,7 +5,10 @@ export const CommentsContainer = styled.div`
     flex-direction: column;
     gap: 10px;
     padding: 30px;
-    width: 40%
+    margin: 0 auto;
+    width: 100%;
+    background-color: #8080801;
+    border-radius: 16px;
 `
 
 export const User = styled.div`
@@ -28,6 +31,10 @@ export const Text = styled.div`
 
 export const Button = styled.button`
     border: none;
-    width: 50%;
+    width: 20%;
+    height: 3vh;
+    background: #f89e439e;
+    border-radius: 5px;
+    text-decoration: underline;
     cursor: pointer;
 `

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { loadNewsById, loadComments, getChildComments } from '../../../store/actions/news-actions';
+import { loadNewsById, loadComments, getChildComments, cleanChildrenComments } from '../../../store/actions/news-actions';
 import { Information } from '../../info/Inform';
 import { selectItem, selectComments, selectChildComments } from '../../../store/selector/news-selector';
 import { timeConverter } from "../../../service/date-converter";
@@ -16,15 +16,20 @@ export const Detail = () => {
 
     const item = useSelector(selectItem);
     const comments = useSelector(selectComments);
-    const children = useSelector(selectChildComments)
+    const children = useSelector(selectChildComments);
     
-    const [childComments, setChildComments] = useState(children)
-    // const [isShowChildComment, setisShowChildComment] = useState(false);
+    const [childComments, setChildComments] = useState(children);
+    const [ isShowChildrenComments, setIsShowChildrenComments ] = useState(false);
     
     const showChildComments = (id) => {
         dispatch(getChildComments(id))
         setChildComments(children)
-        console.log(childComments);
+        setIsShowChildrenComments(current => !current)
+    }
+
+    const updateComments = () => {
+        dispatch(loadNewsById(id))
+        dispatch(loadComments(id))
     }
 
 
@@ -38,7 +43,7 @@ export const Detail = () => {
         <DetailsContainer>
             <div className='item-buttons'>
                 <button onClick={() => navigate(-1)}>Back</button>
-                <button onClick={() => dispatch(loadNewsById(id))}>Update</button>
+                <button onClick={updateComments}>Update</button>
             </div>
             <MainContainer>
                 <Information 
@@ -47,8 +52,7 @@ export const Detail = () => {
                     time={timeConverter(item.time)}
                 />
                 <Comments>
-                    {
-                        comments.map(elem => 
+                    {comments.map(elem => 
                             <Comment 
                                     key={elem.id}
                                     by={elem.by}
@@ -56,8 +60,8 @@ export const Detail = () => {
                                     time={timeConverter(elem.time)}
                                     onClick={() => {showChildComments(elem.id)}}
                                     >
-                                        { 
-                                            children.map((item) => 
+                                        { (isShowChildrenComments && childComments.length) &&
+                                            childComments.map((item) =>
                                                 <Comment 
                                                     key={item.id}
                                                     by={item.by}
@@ -67,6 +71,9 @@ export const Detail = () => {
                                                 />
                                             )
                                         }
+                                        { !isShowChildrenComments &&
+                                            <></>
+                                        }
                             </Comment>
                         )
                     }
@@ -75,14 +82,3 @@ export const Detail = () => {
         </DetailsContainer>
     )
 }
-
-// { isShowChildComment ?
-//     <Comment 
-//         key={elem.id}
-//         by={elem.by}
-//         text={elem.text}
-//         time={timeConverter(elem.time)}
-//         onClick={() => {showChildComments(elem.id)}}
-//     />
-//     : <></>
-// }     
