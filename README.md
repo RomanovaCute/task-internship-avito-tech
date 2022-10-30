@@ -6,7 +6,7 @@
 2. ``cd haker-news``
 3. ``yarn install``
 4. ``yarn start``
-5. Приложение откоется по адресу localhost:3000
+5. Приложение откроется по адресу localhost:3000
 
 ## Превью
 ![image](https://user-images.githubusercontent.com/98029620/198887853-5910b830-14f1-4c03-90b0-8dd19d475482.png)
