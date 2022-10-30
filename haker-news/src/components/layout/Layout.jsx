@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom'
-import Nav from "../header/Header";
+import { Nav } from "../header/Header";
 
-const Layout = () => {
+export const Layout = () => {
     return(
         <>
             <Nav/>
@@ -12,4 +12,3 @@ const Layout = () => {
     )
 }
 
-export default Layout;

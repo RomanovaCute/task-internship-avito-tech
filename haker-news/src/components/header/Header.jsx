@@ -3,7 +3,7 @@ import { HeaderContainer, Title, LogoBox } from './styles'
 import { get } from '../../store/actions/news-actions'
 import { useDispatch } from 'react-redux'
 
-const Nav = () => {
+export const Nav = () => {
     const dispatch = useDispatch();
 
     return(
@@ -18,5 +18,3 @@ const Nav = () => {
         </HeaderContainer>
     )
 }
-
-export default Nav;

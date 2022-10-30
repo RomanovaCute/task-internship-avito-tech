@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { loadNewsById, loadComments, getChildComments, cleanChildrenComments } from '../../../store/actions/news-actions';
+import { loadNewsById, loadComments, getChildComments } from '../../../store/actions/news-actions';
 import { Information } from '../../info/Inform';
 import { selectItem, selectComments, selectChildComments } from '../../../store/selector/news-selector';
 import { timeConverter } from "../../../service/date-converter";
 import { Comment } from '../../comments/Comments';
-import { DetailsContainer, MainContainer, Item, Comments } from './styles'
+import { DetailsContainer, MainContainer, Comments } from './styles'
 
 
 export const Detail = () => {
@@ -18,7 +18,7 @@ export const Detail = () => {
     const comments = useSelector(selectComments);
     const children = useSelector(selectChildComments);
     
-    const [childComments, setChildComments] = useState(children);
+    const [childComments, setChildComments] = useState([]);
     const [ isShowChildrenComments, setIsShowChildrenComments ] = useState(false);
     
     const showChildComments = (id) => {
@@ -42,8 +42,8 @@ export const Detail = () => {
     return(
         <DetailsContainer>
             <div className='item-buttons'>
-                <button onClick={() => navigate(-1)}>Back</button>
-                <button onClick={updateComments}>Update</button>
+                <button className="back btn" onClick={() => navigate(-1)}>Back</button>
+                <button className="update btn" onClick={updateComments}>Update</button>
             </div>
             <MainContainer>
                 <Information 
