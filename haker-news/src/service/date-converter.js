@@ -4,8 +4,8 @@ export const timeConverter = (unixTime) => {
         year = newDate.getFullYear(),
         month = months[newDate.getMonth()],
         date = newDate.getDate(),
-        hour = newDate.getHours(),
-        min = newDate.getMinutes(),
+        hour = newDate.getHours().toString().padStart(2,0),
+        min = newDate.getMinutes().toString().padStart(2,0),
         time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min
 
     return time;

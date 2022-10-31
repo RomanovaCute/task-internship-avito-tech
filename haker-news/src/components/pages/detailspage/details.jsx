@@ -61,7 +61,7 @@ export const Detail = () => {
                                     onClick={() => {showChildComments(elem.id)}}
                                     >
                                         { (isShowChildrenComments && childComments.length) &&
-                                            childComments.map((item) =>
+                                            childComments.filter(item => item.parent === elem.id).map((item) =>
                                                 <Comment 
                                                     key={item.id}
                                                     by={item.by}

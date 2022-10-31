@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom'
-import ListItem from "../newspage/NewsItem";
+import { ListItem } from "../newspage/NewsItem";
 import {HomeContainer} from './styles'
 import { timeConverter } from "../../../service/date-converter";
 
-const Homepage = () => {
+export const Homepage = () => {
     const news = useSelector(state => state.news)
     const navigate = useNavigate()
 
@@ -25,5 +25,3 @@ const Homepage = () => {
         </HomeContainer>
     )
 }
-
-export default Homepage;

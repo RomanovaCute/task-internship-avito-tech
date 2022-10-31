@@ -5,13 +5,13 @@ import {
   Route
 } from "react-router-dom";
 import { Layout } from './components/layout/Layout';
-import Homepage from './components/pages/homepage/Home';
+import { Homepage } from './components/pages/homepage/Home';
 import { NotFound } from './components/pages/notfoundpage/NotFound';
 import { Detail } from './components/pages/detailspage/Details';
 
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import {get} from './store/actions/news-actions'
+import { get } from './store/actions/news-actions'
 
 
 function App() {

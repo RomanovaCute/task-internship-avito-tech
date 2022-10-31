@@ -11,7 +11,7 @@ export const Comment = (props) => {
                         <p className="time">{time}</p>
                     </User>
                     <Text>
-                        <p className='text'>{text}</p>
+                        <p className='text'>{ReactHtmlParser(text)}</p>
                     </Text>
                     <Button onClick={onClick}>Show more</Button>
                     <div>

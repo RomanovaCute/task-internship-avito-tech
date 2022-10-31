@@ -1,6 +1,6 @@
 import {NewsContainer, Info, Title} from './styles'
 
-const ListItem = (props) => {
+export const ListItem = (props) => {
     const {title, score, by, time, onClick} = props;
 
     return(
@@ -16,7 +16,3 @@ const ListItem = (props) => {
         </NewsContainer>
     )
 }
-
-export default ListItem;
-
-// by, descendants, id, score, time, title, type, url
