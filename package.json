@@ -1,0 +1,20 @@
+{
+  "name": "task-internship-avito-tech",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "git+https://github.com/RomanovaCute/task-internship-avito-tech.git",
+  "author": "RomanovaCute <romanova17romanova@yandex.ru>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RomanovaCute/task-internship-avito-tech/issues"
+  },
+  "homepage": "https://github.com/RomanovaCute/task-internship-avito-tech#readme",
+  "dependencies": {
+    "create-react-app": "^5.0.1",
+    "react-router-dom": "6.0.0"
+  }
+}
