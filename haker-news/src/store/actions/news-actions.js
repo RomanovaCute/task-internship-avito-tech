@@ -20,16 +20,16 @@ export const getChildrenComments = (children) => ({
     payload: children
 })
 
-
 const url = `https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty`
 
 // дочерние комментарии
-export const getChildComments = (id) => async (dispatch)=> {
+export const getChildComments = (id) => async (dispatch) => {
     const response = await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`)
     const resultGetId = await response.json();
     const resultChildId = resultGetId.kids;
 
-    const loadChildComments = async (resultChildId) => {
+    if(resultChildId){
+        const loadChildComments = async (resultChildId) => {
         const result = await Promise.all(resultChildId.map(async (id) => {
             const res = await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`)
             const resultChildComments = await res.json()
@@ -39,8 +39,9 @@ export const getChildComments = (id) => async (dispatch)=> {
     }
 
     const getResult = await loadChildComments(resultChildId)
-    console.log(getResult);
     dispatch(getChildrenComments(getResult))
+    } return null
+    
 }
 
 
@@ -48,11 +49,9 @@ export const getChildComments = (id) => async (dispatch)=> {
 export const loadComments = (id) => async (dispatch) => {
     const response = await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`)
     const result = await response.json();
-    console.log(result);
 
     if(result.kids){
         const comments = await parseComment(result.kids)
-        console.log(comments);
         dispatch(getComments(comments))
     }
 }
