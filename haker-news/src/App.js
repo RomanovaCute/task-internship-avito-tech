@@ -32,7 +32,7 @@ function App() {
         <div className='App'>
           <Routes>
             <Route path='/' element={<Layout />}>
-              <Route exact path='/' element={<Homepage />} />
+              <Route exact path='task-internship-avito-tech' element={<Homepage />} />
               <Route path='/item/:id' element={<Detail/>} />
               <Route path='*' element={<NotFound/>}/>
             </Route>
