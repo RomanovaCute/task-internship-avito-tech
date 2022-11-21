@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/task-internship-avito-tech/static/css/main.2bed9ef0.css",
+    "main.js": "/task-internship-avito-tech/static/js/main.a1a0fe98.js",
+    "static/js/787.87cc5c00.chunk.js": "/task-internship-avito-tech/static/js/787.87cc5c00.chunk.js",
+    "static/media/notfound.jpg": "/task-internship-avito-tech/static/media/notfound.a966ce3fd071b00eb9d7.jpg",
+    "index.html": "/task-internship-avito-tech/index.html",
+    "static/media/hacker-news.svg": "/task-internship-avito-tech/static/media/hacker-news.d5b335fd78abe8e7f49180db29660b6b.svg",
+    "main.2bed9ef0.css.map": "/task-internship-avito-tech/static/css/main.2bed9ef0.css.map",
+    "main.a1a0fe98.js.map": "/task-internship-avito-tech/static/js/main.a1a0fe98.js.map",
+    "787.87cc5c00.chunk.js.map": "/task-internship-avito-tech/static/js/787.87cc5c00.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2bed9ef0.css",
+    "static/js/main.a1a0fe98.js"
+  ]
+}
